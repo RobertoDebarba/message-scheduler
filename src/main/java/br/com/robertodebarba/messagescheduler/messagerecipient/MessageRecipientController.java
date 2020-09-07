@@ -29,7 +29,6 @@ class MessageRecipientController {
         final MessageRecipientEntity messageRecipientEntity = new MessageRecipientEntity();
         messageRecipientEntity.setRecipient(dto.getRecipient());
         messageRecipientEntity.setMessageType(dto.getMessageType());
-        messageRecipientEntity.setMessageSchedulings(dto.getMessageSchedulings());
 
         final MessageRecipientEntity save = messageRecipientRepository.save(messageRecipientEntity);
         dto.setId(save.getId());
