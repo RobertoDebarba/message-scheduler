@@ -38,6 +38,20 @@ class MessageSchedulingController {
         return response.get();
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> delete(@PathVariable("id") String id) {
+        final Optional<MessageSchedulingEntity> entity = repository. //
+                findById(UUID.fromString(id));
+
+        if (entity.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("MessageScheduling not found");
+        }
+
+        repository.delete(entity.get());
+
+        return ResponseEntity.ok().build();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> post(@RequestBody final MessageSchedulingDTO dto) {
         if (dto == null || dto.getRecipients() == null || dto.getRecipients().isEmpty()) {

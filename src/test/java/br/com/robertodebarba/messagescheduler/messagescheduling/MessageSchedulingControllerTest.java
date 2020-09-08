@@ -104,4 +104,29 @@ class MessageSchedulingControllerTest {
         Assertions.assertEquals("\"recipients\" is required", result.getBody());
     }
 
+    @Test
+    void delete() {
+        UUID uuid = UUID.randomUUID();
+        MessageSchedulingEntity entity = new MessageSchedulingEntity();
+
+        Mockito.when(repositoryMock.findById(uuid)).thenReturn(Optional.of(entity));
+
+        ResponseEntity<?> result = controller.delete(uuid.toString());
+
+        Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
+        Mockito.verify(repositoryMock).delete(entity);
+    }
+
+    @Test
+    void delete_notFound() {
+        UUID uuid = UUID.randomUUID();
+
+        Mockito.when(repositoryMock.findById(uuid)).thenReturn(Optional.empty());
+
+        ResponseEntity<?> result = controller.delete(uuid.toString());
+
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+        Assertions.assertEquals("MessageScheduling not found", result.getBody());
+    }
+
 }
