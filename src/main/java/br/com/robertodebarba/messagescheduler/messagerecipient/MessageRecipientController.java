@@ -1,7 +1,5 @@
 package br.com.robertodebarba.messagescheduler.messagerecipient;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,20 +15,14 @@ import br.com.robertodebarba.messagescheduler.entity.MessageRecipientEntity;
 class MessageRecipientController {
 
     @Autowired
-    private MessageRecipientRepository messageRecipientRepository;
+    private MessageRecipientRepository repository;
 
-    @RequestMapping
-    public List<MessageRecipientEntity> getAll() {
-        return messageRecipientRepository.findAll();
-    }
+    @Autowired
+    private MessageRecipientConverter converter;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> post(@RequestBody final MessageRecipientDTO dto) {
-        final MessageRecipientEntity messageRecipientEntity = new MessageRecipientEntity();
-        messageRecipientEntity.setRecipient(dto.getRecipient());
-        messageRecipientEntity.setMessageType(dto.getMessageType());
-
-        final MessageRecipientEntity save = messageRecipientRepository.save(messageRecipientEntity);
+        final MessageRecipientEntity save = repository.save(converter.toEntity(dto));
         dto.setId(save.getId());
 
         return ResponseEntity.ok(dto);
