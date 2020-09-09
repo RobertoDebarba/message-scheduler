@@ -1,5 +1,7 @@
 # Plataforma de envio de comunicações
 
+[![Build Status](https://travis-ci.org/RobertoDebarba/message-scheduler.svg?branch=master)](https://travis-ci.org/RobertoDebarba/message-scheduler)
+
 A plataforma permite realizar o envio (ainda não implementado) de comunicações de diversos tipos, como 
 e-mail e SMS, através de agendamentos por APIs REST.
 
@@ -46,6 +48,10 @@ mvn spring-boot:run
 ```
 
 ## Como desenvolver
+
+### CI
+
+A execução do build e testes pode ser acompanhada no [CI](https://travis-ci.org/RobertoDebarba/message-scheduler)
 
 ### Execução dos testes
 
