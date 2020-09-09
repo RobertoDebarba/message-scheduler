@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "cc572ad0-63fa-4c10-90f9-11b0b3fbea9c",
+		"name": "message-scheduling",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET messagescheduling",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/messagescheduling/id",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messagescheduling",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST messagescheduling",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sendTime\": \"2020-09-07T19:09:45Z\",\r\n    \"recipients\": [\"4d803dae-80cc-4c23-8fb9-60d4d2a133d2\"],\r\n    \"message\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/messagescheduling",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messagescheduling"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST messagerecipient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"recipient\": \"roberto.luiz@gmail.com\",\r\n    \"messageType\": \"EMAIL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/messagerecipient",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messagerecipient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE messagescheduling",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/messagescheduling/id",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"messagescheduling",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

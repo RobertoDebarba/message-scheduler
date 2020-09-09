@@ -30,7 +30,8 @@ As configurações devem apontar para uma base da dados Postgres vazia. A aplica
 
 * [Swagger](http://localhost:8080/swagger-ui.html) - `http://localhost:8080/swagger-ui.html`
     * A documentação das APIs e descrição dos contratos estão disponíveis nesse endereço ao executar a aplicação.
-* Postman TODO
+* [Postman](https://www.getpostman.com/) - `message-scheduling.postman_collection.json`
+    * A chamada das APIs para desenvolvimento e testes pode ser feita pelo Postman importando essa coleção.
 
 ## Como executar
 
