@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.robertodebarba.messagescheduler.entity.MessageSchedulingEntity;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Agendamento de envio de comunicação")
 @RestController
 @RequestMapping(value = "/messagescheduling", consumes = MediaType.APPLICATION_JSON_VALUE)
 class MessageSchedulingController {
@@ -25,7 +28,8 @@ class MessageSchedulingController {
     @Autowired
     private MessageSchedulingConverter converter;
 
-    @RequestMapping(path = "/{id}")
+    @ApiOperation(value = "Retorna um agendamento de envio de comunicação por ID")
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET, consumes = { MediaType.ALL_VALUE })
     public ResponseEntity<?> get(@PathVariable("id") String id) {
         final Optional<ResponseEntity<MessageSchedulingDTO>> response = repository. //
                 findById(UUID.fromString(id)). //
@@ -38,7 +42,8 @@ class MessageSchedulingController {
         return response.get();
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    @ApiOperation("Remove um agendamento de envio de comunicação por ID")
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE, consumes = { MediaType.ALL_VALUE })
     public ResponseEntity<?> delete(@PathVariable("id") String id) {
         final Optional<MessageSchedulingEntity> entity = repository. //
                 findById(UUID.fromString(id));
@@ -52,7 +57,8 @@ class MessageSchedulingController {
         return ResponseEntity.ok().build();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @ApiOperation("Insere um agendamento de envio de comunicação")
+    @RequestMapping(method = RequestMethod.POST, consumes = { MediaType.ALL_VALUE })
     public ResponseEntity<?> post(@RequestBody final MessageSchedulingDTO dto) {
         if (dto == null || dto.getRecipients() == null || dto.getRecipients().isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("\"recipients\" is required");

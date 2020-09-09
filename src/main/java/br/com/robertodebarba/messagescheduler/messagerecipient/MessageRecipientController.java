@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.robertodebarba.messagescheduler.entity.MessageRecipientEntity;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api("Destinatário de envio de comunicação")
 @RestController
 @RequestMapping(value = "/messagerecipient", consumes = MediaType.APPLICATION_JSON_VALUE)
 class MessageRecipientController {
@@ -20,7 +23,8 @@ class MessageRecipientController {
     @Autowired
     private MessageRecipientConverter converter;
 
-    @RequestMapping(method = RequestMethod.POST)
+    @ApiOperation("Insere um destinatário de envio de comunicação")
+    @RequestMapping(method = RequestMethod.POST, consumes = { MediaType.ALL_VALUE })
     public ResponseEntity<?> post(@RequestBody final MessageRecipientDTO dto) {
         final MessageRecipientEntity save = repository.save(converter.toEntity(dto));
         dto.setId(save.getId());
