@@ -34,10 +34,16 @@
 			"name": "POST messagescheduling",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"sendTime\": \"2020-09-07T19:09:45Z\",\r\n    \"recipients\": [\"4d803dae-80cc-4c23-8fb9-60d4d2a133d2\"],\r\n    \"message\": \"teste\"\r\n}",
+					"raw": "{\r\n    \"sendTime\": \"2020-09-07T19:09:45Z\",\r\n    \"recipients\": [\r\n        {\"id\":\"0bd48160-86bd-44e5-95fc-6166a5005136\"}, \r\n        {\"id\":\"36c0d4e7-cff1-40ad-8a7e-886a92e83e75\"}\r\n    ],\r\n    \"message\": \"teste\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
