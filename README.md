@@ -54,6 +54,13 @@ mvn spring-boot:run
 
 A execução do build e testes pode ser acompanhada no [CI](https://travis-ci.org/RobertoDebarba/message-scheduler)
 
+### Estrutura do código
+
+A estrutura dos pacotes de código da aplicação segue o conceito de Bounded Context, onde a priorização é no negócio e depois na camada de tecnologia.
+Por exemplo: ao invés do projeto ser separado por pacotes `model`, `controller` e `repository`, todas as camadas estão contidas no pacote que representa a entidade de negócio, como `messageshceduling`.
+Dessa forma a maioria das classes podem ser `package private`, diminuindo o acoplamento.
+A exceção são as classes de entidade, que são transversais dentro da aplicação. Apesar disso, a comunicação com o mundo externo, via APIs, é feita por DTOs e não entidades. 
+
 ### Execução dos testes
 
 A aplicação possui testes automatizados unitários e sua execução pode ser feita através do seguinte comando: 
