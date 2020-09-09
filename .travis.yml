@@ -1,3 +1,6 @@
 language: java
+services:
+  - postgresql
 before_install:
   - chmod +x mvnw
+  - psql -c 'create database messagescheduler;' -U postgres
