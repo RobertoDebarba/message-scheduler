@@ -56,11 +56,15 @@ A execução do build e testes pode ser acompanhada no [CI](https://travis-ci.or
 
 ### Execução dos testes
 
-A aplicação possui testes automatizados unitários e sua execução pode ser feita através do seguinte comando:
+A aplicação possui testes automatizados unitários e sua execução pode ser feita através do seguinte comando: 
 
 ```shell
 mvn test
 ```
+
+## TODO
+
+* [ ] Adicionar uma "camada" de serviço para processar os dados e realizar a comunicação entre os controladores e repositórios, deixando o controlador apenas com o tratamento das restrições da API.
 
 ## License
 

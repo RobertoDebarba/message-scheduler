@@ -10,6 +10,14 @@ import br.com.robertodebarba.messagescheduler.entity.MessageRecipientEntity;
 import br.com.robertodebarba.messagescheduler.entity.MessageSchedulingEntity;
 import br.com.robertodebarba.messagescheduler.messagerecipient.MessageRecipientConverter;
 
+/**
+ * Realiza a conversão dos objetos de entidade {@link MessageSchedulingEntity} para DTO.
+ *
+ * As classes de entidade são transversais na aplicação, porém devem ser contidas.
+ * Os contratos das APIs devem ser definidos via classes DTO visando a transferência de dados
+ * mais especializado e principalmente melhor manutenibilidade, onde a alteração de uma entidade
+ * não impacta em todo o sistema e principalmente na assinatura das APIs, facilitando o versionamento.
+ */
 @Service
 public class MessageSchedulingConverter {
 
